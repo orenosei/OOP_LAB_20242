@@ -1,0 +1,25 @@
+Question 1: If you create a constructor method to build a DVD by title then create a 
+            constructor method to build a DVD by category. Does JAVA allow you to do this?
+-> Answer:  NO, Java does not allow you to create two constructors with the same parameter 
+            types and count, even if the parameter names differ. Both constructors have a 
+            single String parameter, so Java treats them as duplicates. The compiler will 
+            throw an error because it cannot distinguish between them based solely on parameter names.
+
+
+Question 2: Is JAVA a Pass by Value or a Pass by Reference programming language?
+-> Answer:  Java is pass by value for both primitive types and object references
+
+
+Question 3:
+● After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+-> Answer:  Java passes copies of object references, not the actual references or objects.
+            - Inside the method: o1 and o2 are copies of the original references (jungleDVD and cinderellaDVD).
+            - Swapping these copies has no effect on the original references outside the method.
+            - After swap, jungleDVD still points to the "Jungle" object, and cinderellaDVD points to "Cinderella".
+
+● After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+-> Answer:  The copied reference (dvd) initially points to the original object, allowing state modification.
+            - Step 1: dvd is a copy of the reference to the original jungleDVD object.
+            - Step 2: dvd.setTitle(title) changes the original object's title to "Cinderella".
+            - Step 3: dvd = new DigitalVideoDisc(oldTitle) reassigns the local copy to a new object. This does 
+                      not affect the original jungleDVD reference, which still points to the modified object.
