@@ -103,7 +103,7 @@ public class Aims {
         boolean found = false;
         for (Media media : store.getItemsInStore()) {
             if (media.getTitle().equals(title)) {
-                System.out.println(media.toString());
+                System.out.println(media.printData());
                 found = true;
                 mediaDetailsMenu();
                 String inputMediaDetails = System.console().readLine();
@@ -192,8 +192,7 @@ public class Aims {
                         case "1":
                             System.out.println("Enter author: ");
                             String author = System.console().readLine();
-                            media = new Book(store.getItemsInStore().size() + 1, title, category, cost,
-                                    Collections.singletonList(author));
+                            media = new Book(title, category, cost, Collections.singletonList(author));
                             break;
                         case "2":
                             System.out.println("Enter director: ");
@@ -207,8 +206,7 @@ public class Aims {
                             String artist = System.console().readLine();
                             System.out.println("Enter director: ");
                             director = System.console().readLine();
-                            media = new CompactDisc(store.getItemsInStore().size() + 1, title, category,
-                                    director, 0, cost, artist);
+                            media = new CompactDisc(title, category, director, 0, cost, artist);
                             break;
                         default:
                             System.out.println("Invalid media type!");
@@ -307,7 +305,6 @@ public class Aims {
                 default:
                     System.out.println("Invalid choice");
             }
-            //cart.displayCart();
             cartMenu();
             inputCart = System.console().readLine();
         }
@@ -319,19 +316,19 @@ public class Aims {
     public void initializeStore(){
         ArrayList<Media> mediaList = new ArrayList<>();
 
-        mediaList.add(new Book(1, "No Game No Life", "Light Novel", 15.99f, Collections.singletonList("Yuu Kamiya")));
-        mediaList.add(new Book(2, "Sword Art Online", "Light Novel", 18.99f, Collections.singletonList("Reki Kawahara")));
-        mediaList.add(new Book(3, "Re:Zero - Starting Life in Another World", "Light Novel", 20.99f, Collections.singletonList("Tappei Nagatsuki")));
+        mediaList.add(new Book("No Game No Life", "Light Novel", 15.99f, Collections.singletonList("Yuu Kamiya")));
+        mediaList.add(new Book( "Sword Art Online", "Light Novel", 18.99f, Collections.singletonList("Reki Kawahara")));
+        mediaList.add(new Book( "Re:Zero", "Light Novel", 20.99f, Collections.singletonList("Tappei Nagatsuki")));
 
         mediaList.add(new DigitalVideoDisc("Your Name", "Romance", "Makoto Shinkai", 112, 25.99f));
         mediaList.add(new DigitalVideoDisc("Spirited Away", "Fantasy", "Studio Ghibli", 125, 19.99f));
 
-        CompactDisc kimiNoNaWaCD = new CompactDisc(13, "Kimi no Na wa OST", "Music", "RADWIMPS", 0, 12.99f, "RADWIMPS");
+        CompactDisc kimiNoNaWaCD = new CompactDisc( "Kimi no Na wa OST", "Music", "RADWIMPS", 0, 12.99f, "RADWIMPS");
         kimiNoNaWaCD.addTrack(new Track("Zenzenzense", 4));
         kimiNoNaWaCD.addTrack(new Track("Sparkle", 6));
         mediaList.add(kimiNoNaWaCD);
 
-        CompactDisc attackOnTitanCD = new CompactDisc(28, "Attack on Titan OST", "Music", "Hiroyuki Sawano", 0, 14.99f, "Hiroyuki Sawano");
+        CompactDisc attackOnTitanCD = new CompactDisc("Attack on Titan OST", "Music", "Hiroyuki Sawano", 0, 14.99f, "Hiroyuki Sawano");
         attackOnTitanCD.addTrack(new Track("Vogel im Käfig", 5));
         attackOnTitanCD.addTrack(new Track("Call Your Name", 7));
         mediaList.add(attackOnTitanCD);
@@ -349,24 +346,20 @@ public class Aims {
                 case "1":
                     viewStore();
                     break;
-
                 case "2":
                     updateStore();
                     break;
                 case "3":
                     seeCurrentCart();
                     break;
-                default: break;
+                default:
+                    if(!inputProgram.equals("0")) System.out.println("Invalid choice");
             }
-
         }
     }
 
     public static void main(String[] args) {
-
         Aims aims = new Aims();
         aims.initializeStore();
-
-
     }
 }

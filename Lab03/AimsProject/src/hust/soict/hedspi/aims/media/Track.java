@@ -20,10 +20,6 @@ public class Track implements Playable{
         this.length = length;
     }
 
-    public Track(){
-        this.title = "Unknown";
-        this.length = 0;
-    }
     public Track(String title, int length){
         this.title = title;
         this.length = length;
@@ -32,7 +28,7 @@ public class Track implements Playable{
     @Override
     public void play(){
         System.out.println("Playing track " + this.getTitle());
-        System.out.println("Track length: " + this.getLength() + " seconds");
+        System.out.println("Track length: " + this.getLength() + " minutes");
     }
 
     @Override
