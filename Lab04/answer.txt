@@ -1,0 +1,18 @@
+1. The resulting appearances of the applications developed using Swing and AWT might be different as well. Make comparisons.
+=> ans:
+- Top-Level Containers
+    + AWT: Uses platform-dependent containers like Frame, Dialog, and Applet. The appearance varies across operating systems.
+    + Swing: Uses lightweight containers like JFrame, JDialog, and JApplet. Consistent appearance and highly customizable.
+
+- Component Class Names
+    + AWT: Examples include Button, TextField, Checkbox, Panel.
+    + Swing: Adds "J" prefix, such as JButton, JTextField, JCheckBox, JPanel. Swing introduces additional components like JTable, JTree.
+
+- Event Handling
+    + AWT: Older event-handling mechanism, less flexible. Not thread-safe.
+    + Swing: Modern event-handling with detailed listeners and better thread safety using SwingUtilities.invokeLater().
+
+- Appearance
+    + AWT: Relies on the native OS look and feel, limiting customization.
+    + Swing: Consistent appearance with multiple themes and extensive customization options.
+
