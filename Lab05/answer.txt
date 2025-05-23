@@ -1,0 +1,7 @@
+11. The Aims class must be updated to handle any exceptions generated when the play() methods
+    are called. What happens when you don’t update for them to catch?
+
+=> If the Aims class does not handle exceptions thrown by play() methods:
+    - Unhandled exceptions propagate, causing the program to crash with an "unhandled exception" error.
+    - Users see a raw stack trace instead of friendly error messages.
+    - this may freeze the UI
